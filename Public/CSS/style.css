@@ -1,0 +1,24 @@
+.CanvasContainer {
+  text-align: center;
+}
+#go {
+  background-color: green;
+  padding: 5px 45px;
+}
+.select {
+  background-color: darkslategrey;
+  color: white;
+  padding: 10px 10px;
+}
+canvas {
+  background-color: #333333;
+  border: 2px solid white;
+}
+body {
+  background-color: #666666;
+}
+h1 {
+  text-align: center;
+  color: #333333;
+  -webkit-text-stroke: 1px #333333;
+}

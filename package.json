@@ -1,0 +1,21 @@
+{
+  "name": "sorting-algorithm-visualizer",
+  "version": "1.0.0",
+  "description": "A way to visualize the process of different sorting algorithms.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc "
+  },
+  "keywords": [
+    "Sorting",
+    "Algorithm",
+    "Project"
+  ],
+  "author": "Celeste Artley",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "typescript": "^4.3.5"
+  }
+}
