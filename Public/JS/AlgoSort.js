@@ -26,6 +26,7 @@ export class AlgoSort {
     }
     quickSort(array, start, end) {
         return __awaiter(this, void 0, void 0, function* () {
+            //canvas.drawGraph(array); Not where this needs to go.
             if (start >= end)
                 return;
             let index = yield this.partition(array, start, end);
@@ -44,9 +45,8 @@ export class AlgoSort {
                     if (array[j] > array[j + 1]) {
                         this.swap(array, j, j + 1);
                         console.log("a swap happened");
-                        canvas.drawGraph(array);
                     }
-                    //canvas.drawGraph(array);
+                    canvas.drawGraph(array);
                 }
             }
             return array;

@@ -6,15 +6,16 @@ export class AlgoSort {
   constructor() {}
   setup() {
     canvas.setup();
-    this.quickSort(
-      canvas.array,
-      canvas.array[0],
-      canvas.array[canvas.array.length - 1]
-    );
-    //this.bubbleSort(canvas.array);
+    // this.quickSort(
+    //   canvas.array,
+    //   canvas.array[0],
+    //   canvas.array[canvas.array.length - 1]
+    // );
+    this.bubbleSort(canvas.array);
   }
 
   async quickSort(array: Array<number>, start: number, end: number) {
+    //canvas.drawGraph(array); Not where this needs to go.
     if (start >= end) return;
     let index = await this.partition(array, start, end);
     await Promise.all([
@@ -31,9 +32,8 @@ export class AlgoSort {
         if (array[j] > array[j + 1]) {
           this.swap(array, j, j + 1);
           console.log("a swap happened");
-          canvas.drawGraph(array);
         }
-        //canvas.drawGraph(array);
+        canvas.drawGraph(array);
       }
     }
 
