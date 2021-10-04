@@ -3,22 +3,25 @@
 }
 #go {
   background-color: green;
+  border-radius: 0.25rem;
   padding: 5px 45px;
 }
 .select {
   background-color: darkslategrey;
+  border-radius: 0.5rem;
   color: white;
   padding: 10px 10px;
 }
 canvas {
   background-color: #333333;
   border: 2px solid white;
+  border-radius: 0.5rem;
 }
 body {
   background-color: #666666;
 }
 h1 {
   text-align: center;
-  color: #333333;
-  -webkit-text-stroke: 1px #333333;
+  /*color: #333333;*/
+  color: #ffffff;
 }

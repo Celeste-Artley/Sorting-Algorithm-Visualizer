@@ -6,12 +6,12 @@ export class AlgoSort {
   constructor() {}
   setup() {
     canvas.setup();
-    // this.quickSort(
-    //   canvas.array,
-    //   canvas.array[0],
-    //   canvas.array[canvas.array.length - 1]
-    // );
-    this.bubbleSort(canvas.array);
+    this.quickSort(
+      canvas.array,
+      canvas.array[0],
+      canvas.array[canvas.array.length - 1]
+    );
+    //this.bubbleSort(canvas.array);
   }
 
   async quickSort(array: Array<number>, start: number, end: number) {
