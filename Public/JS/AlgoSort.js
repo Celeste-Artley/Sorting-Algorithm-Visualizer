@@ -24,15 +24,18 @@ export class AlgoSort {
         // );
         this.bubbleSort(canvas.array);
     }
-    // async quickSort(array: Array<number>, start: number, end: number) {
-    //   //canvas.drawGraph(array); Not where this needs to go.
-    //   if (start >= end) return;
-    //   let index = await this.partition(array, start, end);
-    //   await Promise.all([
-    //     this.quickSort(array, start, index - 1),
-    //     this.quickSort(array, index + 1, end),
-    //   ]);
-    // }
+    quickSort(array, start, end) {
+        return __awaiter(this, void 0, void 0, function* () {
+            //this was started but not finished in order to fix bubble sort into what it should be.
+            if (start >= end)
+                return;
+            let index = yield this.partition(array, start, end);
+            yield Promise.all([
+                this.quickSort(array, start, index - 1),
+                this.quickSort(array, index + 1, end),
+            ]);
+        });
+    }
     bubbleSort(array) {
         return __awaiter(this, void 0, void 0, function* () {
             let isSorted = false;
@@ -48,8 +51,9 @@ export class AlgoSort {
                 }
                 counter++;
             }
-            canvas.drawGraph(array);
             console.log("This is the array after the sort: " + array);
+            yield this.sleep(500);
+            canvas.drawGraph(array); // this should be displaying a proper graph however it is not and Canvas may need to be reworked.
             // for (let i = 0; i < array.length; i++) {
             //   for (let j = 0; j < array.length; j++) {
             //     await this.sleep(5);
@@ -76,13 +80,13 @@ export class AlgoSort {
         return __awaiter(this, void 0, void 0, function* () { });
     }
     swap(leftIndex, rightIndex, items) {
-        this.sleep(25);
         var temp = items[leftIndex];
         items[leftIndex] = items[rightIndex];
         items[rightIndex] = temp;
     }
     partition(array, start, end) {
         return __awaiter(this, void 0, void 0, function* () {
+            //this method is still under work as it is a part of Quicksort.
             var pivotIndex = start;
             var pivotValue = array[end];
             for (let i = start; i < end; i++) {
