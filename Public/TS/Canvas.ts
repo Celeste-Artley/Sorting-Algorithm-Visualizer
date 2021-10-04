@@ -54,6 +54,6 @@ export class Canvas {
         "White"
       );
     }
-    console.log("a draw happened");
+    //console.log("a draw happened");
   }
 }

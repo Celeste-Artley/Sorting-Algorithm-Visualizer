@@ -36,6 +36,6 @@ export class Canvas {
         for (var i = 0; lines.length > i; i++) {
             this.drawLine(i * 15 + 5, canvas.height, i * 15 + 5, canvas.height - lines[i], "White");
         }
-        console.log("a draw happened");
+        //console.log("a draw happened");
     }
 }
