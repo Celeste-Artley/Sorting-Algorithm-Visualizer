@@ -1,20 +1,21 @@
 import { Canvas } from "./Canvas.js";
-import { SortingUtils } from "./sortingUtils.js";
+import { SortingUtils } from "./SortingUtils.js";
 
 var canvas = new Canvas();
 var util = new SortingUtils();
 
 export class AlgoSort {
   constructor() {}
-  setup() {
+  start() {
     canvas.setup();
     // this.quickSort(
     //   canvas.array,
     //   canvas.array[0],
     //   canvas.array[canvas.array.length - 1]
     // );
-
-    this.bubbleSort(canvas.array);
+  }
+  clear() {
+    canvas.clear();
   }
 
   async quickSort(array: Array<number>, start: number, end: number) {
@@ -27,7 +28,9 @@ export class AlgoSort {
     ]);
   }
 
-  async bubbleSort(array: Array<number>) {
+  async bubbleSort() {
+    let array = canvas.array;
+
     let isSorted = false;
     let counter = 0;
     console.log(array);

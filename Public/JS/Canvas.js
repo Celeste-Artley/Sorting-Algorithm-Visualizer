@@ -6,6 +6,11 @@ export class Canvas {
         this.array = this.createRandomArray(53);
     }
     setup() {
+        if (this.array.length >= 1) {
+            this.array = [];
+            this.array = this.createRandomArray(53);
+            console.log("This is beign ran.");
+        }
         this.drawGraph(this.array);
     }
     drawLine(startX, startY, endX, endY, color) {
@@ -36,6 +41,5 @@ export class Canvas {
         for (var i = 0; lines.length > i; i++) {
             this.drawLine(i * 15 + 5, canvas.height, i * 15 + 5, canvas.height - lines[i], "White");
         }
-        //console.log("a draw happened");
     }
 }

@@ -8,36 +8,37 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { Canvas } from "./Canvas.js";
+import { SortingUtils } from "./SortingUtils.js";
 var canvas = new Canvas();
+var util = new SortingUtils();
 export class AlgoSort {
-    constructor() {
-        this.sleep = (milliseconds) => {
-            return new Promise((resolve) => setTimeout(resolve, milliseconds));
-        };
-    }
-    setup() {
+    constructor() { }
+    start() {
         canvas.setup();
         // this.quickSort(
         //   canvas.array,
         //   canvas.array[0],
         //   canvas.array[canvas.array.length - 1]
         // );
-        this.bubbleSort(canvas.array);
+    }
+    clear() {
+        canvas.clear();
     }
     quickSort(array, start, end) {
         return __awaiter(this, void 0, void 0, function* () {
             //this was started but not finished in order to fix bubble sort into what it should be.
             if (start >= end)
                 return;
-            let index = yield this.partition(array, start, end);
+            let index = yield util.partition(array, start, end);
             yield Promise.all([
                 this.quickSort(array, start, index - 1),
                 this.quickSort(array, index + 1, end),
             ]);
         });
     }
-    bubbleSort(array) {
+    bubbleSort() {
         return __awaiter(this, void 0, void 0, function* () {
+            let array = canvas.array;
             let isSorted = false;
             let counter = 0;
             console.log(array);
@@ -45,21 +46,21 @@ export class AlgoSort {
                 isSorted = true;
                 for (let i = 0; i < array.length - 1 - counter; i++) {
                     if (array[i] > array[i + 1]) {
-                        this.swap(i, i + 1, array);
+                        util.swap(i, i + 1, array);
                         isSorted = false;
                     }
                 }
                 counter++;
             }
             console.log("This is the array after the sort: " + array);
-            yield this.sleep(500);
+            yield util.sleep(500);
             canvas.drawGraph(array); // this should be displaying a proper graph however it is not and Canvas may need to be reworked.
             // for (let i = 0; i < array.length; i++) {
             //   for (let j = 0; j < array.length; j++) {
-            //     await this.sleep(5);
+            //     await util.sleep(5);
             //     canvas.clear();
             //     if (array[j] > array[j + 1]) {
-            //       this.swap(i, i + 1, array);
+            //       util.swap(i, i + 1, array);
             //     }
             //     canvas.drawGraph(array);
             //   }
@@ -78,25 +79,5 @@ export class AlgoSort {
     }
     bucketSort(array) {
         return __awaiter(this, void 0, void 0, function* () { });
-    }
-    swap(leftIndex, rightIndex, items) {
-        var temp = items[leftIndex];
-        items[leftIndex] = items[rightIndex];
-        items[rightIndex] = temp;
-    }
-    partition(array, start, end) {
-        return __awaiter(this, void 0, void 0, function* () {
-            //this method is still under work as it is a part of Quicksort.
-            var pivotIndex = start;
-            var pivotValue = array[end];
-            for (let i = start; i < end; i++) {
-                if (array[i] < pivotValue) {
-                    this.swap(i, pivotIndex, array);
-                    pivotIndex++;
-                }
-                this.swap(i, pivotIndex, array);
-            }
-            return pivotIndex;
-        });
     }
 }

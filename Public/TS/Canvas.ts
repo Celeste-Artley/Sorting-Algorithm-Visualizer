@@ -5,6 +5,11 @@ export class Canvas {
   array: Array<number> = this.createRandomArray(53);
 
   setup() {
+    if (this.array.length >= 1) {
+      this.array = [];
+      this.array = this.createRandomArray(53);
+      console.log("This is beign ran.");
+    }
     this.drawGraph(this.array);
   }
 
