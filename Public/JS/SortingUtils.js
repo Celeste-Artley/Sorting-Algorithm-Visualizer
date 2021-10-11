@@ -18,6 +18,17 @@ export class SortingUtils {
         items[leftIndex] = items[rightIndex];
         items[rightIndex] = temp;
     }
+    quickSortRecursion(array, start, end) {
+        return __awaiter(this, void 0, void 0, function* () {
+            //this was started but not finished in order to fix bubble sort into what it should be.
+            // if (start >= end) return;
+            // let index = await util.partition(array, start, end);
+            // await Promise.all([
+            //   this.quickSort(array, start, index - 1),
+            //   this.quickSort(array, index + 1, end),
+            // ]);
+        });
+    }
     partition(array, start, end) {
         return __awaiter(this, void 0, void 0, function* () {
             //this method is still under work as it is a part of Quicksort.
