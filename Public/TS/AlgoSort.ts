@@ -17,7 +17,7 @@ export class AlgoSort {
     console.log("Quick Sort method called");
     let array = canvas.array;
     //for some reason this is being returned as "not a function..."
-    util.quickSortRecursion(array, array[0], array.length - 1);
+    util.quickSortRecursion(array, array[0], array.length - 1, canvas);
   }
 
   async bubbleSort() {

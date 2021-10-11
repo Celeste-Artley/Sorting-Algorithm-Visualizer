@@ -18,18 +18,19 @@ export class SortingUtils {
         items[leftIndex] = items[rightIndex];
         items[rightIndex] = temp;
     }
-    quickSortRecursion(array, start, end) {
+    quickSortRecursion(array, start, end, canvas) {
         return __awaiter(this, void 0, void 0, function* () {
-            //this was started but not finished in order to fix bubble sort into what it should be.
-            // if (start >= end) return;
-            // let index = await util.partition(array, start, end);
-            // await Promise.all([
-            //   this.quickSort(array, start, index - 1),
-            //   this.quickSort(array, index + 1, end),
-            // ]);
+            if (start >= end)
+                return;
+            console.log("This was a test");
+            let index = yield this.partition(array, start, end, canvas);
+            yield Promise.all([
+                this.quickSortRecursion(array, start, index - 1, canvas),
+                this.quickSortRecursion(array, index + 1, end, canvas),
+            ]);
         });
     }
-    partition(array, start, end) {
+    partition(array, start, end, canvas) {
         return __awaiter(this, void 0, void 0, function* () {
             //this method is still under work as it is a part of Quicksort.
             var pivotIndex = start;
@@ -37,9 +38,13 @@ export class SortingUtils {
             for (let i = start; i < end; i++) {
                 if (array[i] < pivotValue) {
                     this.swap(i, pivotIndex, array);
+                    canvas.clear();
+                    canvas.drawGraph(array);
                     pivotIndex++;
                 }
                 this.swap(i, pivotIndex, array);
+                canvas.clear();
+                canvas.drawGraph(array);
             }
             return pivotIndex;
         });
