@@ -24,16 +24,23 @@ export class AlgoSort {
     clear() {
         canvas.clear();
     }
-    quickSort(array, start, end) {
+    quickSort() {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Quick Sort method called");
+            let array = canvas.array;
+            //for some reason this is being returned as "not a function..."
+            //this.quickSortRecursion(array, array[0], array.length - 1);
+        });
+    }
+    quickSortRecursion(array, start, end) {
         return __awaiter(this, void 0, void 0, function* () {
             //this was started but not finished in order to fix bubble sort into what it should be.
-            if (start >= end)
-                return;
-            let index = yield util.partition(array, start, end);
-            yield Promise.all([
-                this.quickSort(array, start, index - 1),
-                this.quickSort(array, index + 1, end),
-            ]);
+            // if (start >= end) return;
+            // let index = await util.partition(array, start, end);
+            // await Promise.all([
+            //   this.quickSort(array, start, index - 1),
+            //   this.quickSort(array, index + 1, end),
+            // ]);
         });
     }
     bubbleSort() {
@@ -53,6 +60,7 @@ export class AlgoSort {
                 counter++;
             }
             console.log("This is the array after the sort: " + array);
+            canvas.clear;
             yield util.sleep(500);
             canvas.drawGraph(array); // this should be displaying a proper graph however it is not and Canvas may need to be reworked.
             // for (let i = 0; i < array.length; i++) {
@@ -68,16 +76,28 @@ export class AlgoSort {
             // return array;
         });
     }
-    mergeSort(array) {
-        return __awaiter(this, void 0, void 0, function* () { });
+    mergeSort() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let array = canvas.array;
+            console.log("Merge Sort method called");
+        });
     }
-    insertionSort(array) {
-        return __awaiter(this, void 0, void 0, function* () { });
+    insertionSort() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let array = canvas.array;
+            console.log("Insertion Sort method called");
+        });
     }
-    heapSort(array) {
-        return __awaiter(this, void 0, void 0, function* () { });
+    heapSort() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let array = canvas.array;
+            console.log("Heap Sort method called");
+        });
     }
-    bucketSort(array) {
-        return __awaiter(this, void 0, void 0, function* () { });
+    bucketSort() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let array = canvas.array;
+            console.log("Bucket Sort method called");
+        });
     }
 }

@@ -18,19 +18,24 @@ export class AlgoSort {
     canvas.clear();
   }
 
-  async quickSort(array: Array<number>, start: number, end: number) {
+  async quickSort() {
+    console.log("Quick Sort method called");
+    let array = canvas.array;
+    //for some reason this is being returned as "not a function..."
+    //this.quickSortRecursion(array, array[0], array.length - 1);
+  }
+  async quickSortRecursion(array: Array<number>, start: number, end: number) {
     //this was started but not finished in order to fix bubble sort into what it should be.
-    if (start >= end) return;
-    let index = await util.partition(array, start, end);
-    await Promise.all([
-      this.quickSort(array, start, index - 1),
-      this.quickSort(array, index + 1, end),
-    ]);
+    // if (start >= end) return;
+    // let index = await util.partition(array, start, end);
+    // await Promise.all([
+    //   this.quickSort(array, start, index - 1),
+    //   this.quickSort(array, index + 1, end),
+    // ]);
   }
 
   async bubbleSort() {
     let array = canvas.array;
-
     let isSorted = false;
     let counter = 0;
     console.log(array);
@@ -60,8 +65,20 @@ export class AlgoSort {
     // }
     // return array;
   }
-  async mergeSort(array: Array<number>) {}
-  async insertionSort(array: Array<number>) {}
-  async heapSort(array: Array<number>) {}
-  async bucketSort(array: Array<number>) {}
+  async mergeSort() {
+    let array = canvas.array;
+    console.log("Merge Sort method called");
+  }
+  async insertionSort() {
+    let array = canvas.array;
+    console.log("Insertion Sort method called");
+  }
+  async heapSort() {
+    let array = canvas.array;
+    console.log("Heap Sort method called");
+  }
+  async bucketSort() {
+    let array = canvas.array;
+    console.log("Bucket Sort method called");
+  }
 }
