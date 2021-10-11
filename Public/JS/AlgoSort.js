@@ -107,7 +107,7 @@ export class AlgoSort {
                     yield util.sleep(5);
                     canvas.clear();
                     if (array[j] > array[j + 1]) {
-                        util.swap(i, i + 1, array);
+                        util.swap(j, j + 1, array);
                     }
                     canvas.drawGraph(array);
                 }
