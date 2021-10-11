@@ -21,3 +21,7 @@ document.getElementById("heap").addEventListener("click", algoSort.heapSort);
 document
   .getElementById("bucket")
   .addEventListener("click", algoSort.bucketSort);
+
+document
+  .getElementById("test")
+  .addEventListener("click", algoSort.functioningSortTestAlgo);

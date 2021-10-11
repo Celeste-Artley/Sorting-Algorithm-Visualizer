@@ -60,7 +60,6 @@ export class AlgoSort {
                 counter++;
             }
             console.log("This is the array after the sort: " + array);
-            canvas.clear;
             yield util.sleep(500);
             canvas.drawGraph(array); // this should be displaying a proper graph however it is not and Canvas may need to be reworked.
             // for (let i = 0; i < array.length; i++) {
@@ -98,6 +97,21 @@ export class AlgoSort {
         return __awaiter(this, void 0, void 0, function* () {
             let array = canvas.array;
             console.log("Bucket Sort method called");
+        });
+    }
+    functioningSortTestAlgo() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let array = canvas.array;
+            for (let i = 0; i < array.length; i++) {
+                for (let j = 0; j < array.length; j++) {
+                    yield util.sleep(5);
+                    canvas.clear();
+                    if (array[j] > array[j + 1]) {
+                        util.swap(i, i + 1, array);
+                    }
+                    canvas.drawGraph(array);
+                }
+            }
         });
     }
 }

@@ -81,4 +81,17 @@ export class AlgoSort {
     let array = canvas.array;
     console.log("Bucket Sort method called");
   }
+  async functioningSortTestAlgo() {
+    let array = canvas.array;
+    for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < array.length; j++) {
+        await util.sleep(5);
+        canvas.clear();
+        if (array[j] > array[j + 1]) {
+          util.swap(i, i + 1, array);
+        }
+        canvas.drawGraph(array);
+      }
+    }
+  }
 }
