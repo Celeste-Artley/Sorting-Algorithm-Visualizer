@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sorting Algorithm Visualizer</title>
-    <link rel="stylesheet" href="CSS/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+  <body>
     <h1>Sorting Algorithm Visulizer</h1>
     <div class="CanvasContainer">
-        
-        <canvas title="Sorting Algorithm Visualizer" id="AlgoDisplay" height="800" width="800"></canvas>
-        <div class="SortSelection">
-            <button class="select" id="quick">Quick Sort</button>
-            <button class="select" id="bubble">Bubble Sort</button>
-            <button class="select" id="merge">Merge Sort</button>
-            <button class="select" id="insertion">Insertion Sort</button>
-            <button class="select" id="heap">Heap Sort</button>
-            <button class="select" id="bucket">Bucket Sort</button>
-            <button id="go">GO!</button>
-        </div>
-        
+      <canvas
+        title="Sorting Algorithm Visualizer"
+        id="AlgoDisplay"
+        height="800"
+        width="800"
+      ></canvas>
+      <div class="SortSelection">
+        <button class="select" id="quick">Quick Sort</button>
+        <button class="select" id="bubble">Bubble Sort</button>
+        <button class="select" id="merge">Merge Sort</button>
+        <button class="select" id="insertion">Insertion Sort</button>
+        <button class="select" id="heap">Heap Sort</button>
+        <button class="select" id="bucket">Bucket Sort</button>
+        <button id="go">GO!</button>
+      </div>
     </div>
-    
-</body>
-<script type="module" src="JS/Main.js"></script>
+  </body>
+  <script type="module" src="JS/Controller.js"></script>
 </html>
