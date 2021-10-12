@@ -20,9 +20,9 @@ export class SortingUtils {
     }
     quickSortRecursion(array, start, end, canvas) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (start >= end)
+            if (start >= end) {
                 return;
-            console.log("This was a test");
+            }
             let index = yield this.partition(array, start, end, canvas);
             yield Promise.all([
                 this.quickSortRecursion(array, start, index - 1, canvas),
@@ -32,20 +32,20 @@ export class SortingUtils {
     }
     partition(array, start, end, canvas) {
         return __awaiter(this, void 0, void 0, function* () {
-            //this method is still under work as it is a part of Quicksort.
             var pivotIndex = start;
             var pivotValue = array[end];
             for (let i = start; i < end; i++) {
                 if (array[i] < pivotValue) {
                     this.swap(i, pivotIndex, array);
+                    yield this.sleep(5);
                     canvas.clear();
                     canvas.drawGraph(array);
                     pivotIndex++;
                 }
-                this.swap(i, pivotIndex, array);
-                canvas.clear();
-                canvas.drawGraph(array);
             }
+            this.swap(pivotIndex, end, array);
+            canvas.clear();
+            canvas.drawGraph(array);
             return pivotIndex;
         });
     }

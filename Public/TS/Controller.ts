@@ -2,8 +2,11 @@ import { AlgoSort } from "./AlgoSort.js";
 
 var algoSort: AlgoSort = new AlgoSort();
 
-document.getElementById("clear").addEventListener("click", algoSort.clear);
-document.getElementById("newArray").addEventListener("click", algoSort.start);
+document.getElementById("reset").addEventListener("click", algoSort.reset);
+
+document
+  .getElementById("newArray")
+  .addEventListener("click", algoSort.newArray);
 
 document.getElementById("quick").addEventListener("click", algoSort.quickSort);
 document

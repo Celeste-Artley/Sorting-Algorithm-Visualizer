@@ -16,15 +16,21 @@ export class AlgoSort {
     start() {
         canvas.setup();
     }
+    newArray() {
+        canvas.clear();
+        canvas.setup();
+    }
     clear() {
         canvas.clear();
     }
+    reset() {
+        canvas.resetGraph();
+    }
     quickSort() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("Quick Sort method called");
             let array = canvas.array;
             //for some reason this is being returned as "not a function..."
-            util.quickSortRecursion(array, array[0], array.length - 1, canvas);
+            util.quickSortRecursion(array, 0, array.length - 1, canvas);
         });
     }
     bubbleSort() {
@@ -46,7 +52,6 @@ export class AlgoSort {
                 }
                 counter++;
             }
-            console.log("This is the array after the sort: " + array);
         });
     }
     mergeSort() {

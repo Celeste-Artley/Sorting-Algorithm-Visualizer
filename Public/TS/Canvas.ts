@@ -3,12 +3,13 @@ if (canvas) var ctx = (canvas as HTMLCanvasElement).getContext("2d");
 
 export class Canvas {
   array: Array<number> = this.createRandomArray(53);
+  previousArray: Array<number>;
 
   setup() {
     if (this.array.length >= 1) {
       this.array = [];
       this.array = this.createRandomArray(53);
-      console.log("This is beign ran.");
+      this.drawGraph(this.array);
     }
     this.drawGraph(this.array);
   }
@@ -35,9 +36,11 @@ export class Canvas {
     for (var i: number = 0; i < num; i++) {
       array[i] = Math.floor(Math.random() * 750) + 1;
     }
-    console.log("The original array : " + array);
+    console.log("The current array : " + array);
+    this.previousArray = array;
     return array;
   }
+
   clear() {
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -49,6 +52,16 @@ export class Canvas {
     );
     ctx.restore();
   }
+
+  resetGraph() {
+    if (this.previousArray) {
+      this.clear();
+      console.log(this.previousArray);
+      this.array = this.previousArray;
+      this.setup();
+    }
+  }
+
   drawGraph(lines: Array<number>) {
     for (var i: number = 0; lines.length > i; i++) {
       this.drawLine(

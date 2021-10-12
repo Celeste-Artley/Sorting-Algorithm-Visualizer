@@ -9,7 +9,7 @@ export class Canvas {
         if (this.array.length >= 1) {
             this.array = [];
             this.array = this.createRandomArray(53);
-            console.log("This is beign ran.");
+            this.drawGraph(this.array);
         }
         this.drawGraph(this.array);
     }
@@ -28,7 +28,8 @@ export class Canvas {
         for (var i = 0; i < num; i++) {
             array[i] = Math.floor(Math.random() * 750) + 1;
         }
-        console.log("The original array : " + array);
+        console.log("The current array : " + array);
+        this.previousArray = array;
         return array;
     }
     clear() {
@@ -36,6 +37,14 @@ export class Canvas {
         ctx.setTransform(1, 0, 0, 1, 0, 0);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.restore();
+    }
+    resetGraph() {
+        if (this.previousArray) {
+            this.clear();
+            console.log(this.previousArray);
+            this.array = this.previousArray;
+            this.setup();
+        }
     }
     drawGraph(lines) {
         for (var i = 0; lines.length > i; i++) {

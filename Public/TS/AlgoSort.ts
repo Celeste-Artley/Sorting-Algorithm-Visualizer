@@ -9,15 +9,21 @@ export class AlgoSort {
   start() {
     canvas.setup();
   }
+  newArray() {
+    canvas.clear();
+    canvas.setup();
+  }
   clear() {
     canvas.clear();
   }
+  reset() {
+    canvas.resetGraph();
+  }
 
   async quickSort() {
-    console.log("Quick Sort method called");
     let array = canvas.array;
     //for some reason this is being returned as "not a function..."
-    util.quickSortRecursion(array, array[0], array.length - 1, canvas);
+    util.quickSortRecursion(array, 0, array.length - 1, canvas);
   }
 
   async bubbleSort() {
@@ -38,7 +44,6 @@ export class AlgoSort {
       }
       counter++;
     }
-    console.log("This is the array after the sort: " + array);
   }
   async mergeSort() {
     let array = canvas.array;
