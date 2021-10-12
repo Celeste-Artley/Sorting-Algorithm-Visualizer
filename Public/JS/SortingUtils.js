@@ -9,8 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 export class SortingUtils {
     constructor() {
-        this.sleep = (milliseconds) => {
-            return new Promise((resolve) => setTimeout(resolve, milliseconds));
+        this.sleep = () => {
+            return new Promise((resolve) => setTimeout(resolve, SortingUtils.waitTime));
         };
     }
     swap(leftIndex, rightIndex, items) {
@@ -37,7 +37,7 @@ export class SortingUtils {
             for (let i = start; i < end; i++) {
                 if (array[i] < pivotValue) {
                     this.swap(i, pivotIndex, array);
-                    yield this.sleep(5);
+                    yield this.sleep();
                     canvas.clear();
                     canvas.drawGraph(array);
                     pivotIndex++;
@@ -50,3 +50,4 @@ export class SortingUtils {
         });
     }
 }
+SortingUtils.waitTime = 5;

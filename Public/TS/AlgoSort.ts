@@ -37,7 +37,7 @@ export class AlgoSort {
         if (array[i] > array[i + 1]) {
           util.swap(i, i + 1, array);
           isSorted = false;
-          await util.sleep(5);
+          await util.sleep();
           canvas.clear();
           canvas.drawGraph(array);
         }
@@ -65,7 +65,7 @@ export class AlgoSort {
     let array = canvas.array;
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array.length; j++) {
-        await util.sleep(5);
+        await util.sleep();
         canvas.clear();
         if (array[j] > array[j + 1]) {
           util.swap(j, j + 1, array);

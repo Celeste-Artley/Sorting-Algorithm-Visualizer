@@ -1,8 +1,10 @@
 import { Canvas } from "./Canvas";
+import { AlgoSort } from "./AlgoSort";
 
 export class SortingUtils {
-  sleep = (milliseconds: number) => {
-    return new Promise((resolve) => setTimeout(resolve, milliseconds));
+  static waitTime: number = 5;
+  sleep = () => {
+    return new Promise((resolve) => setTimeout(resolve, SortingUtils.waitTime));
   };
 
   swap(leftIndex: number, rightIndex: number, items: Array<number>) {
@@ -38,7 +40,7 @@ export class SortingUtils {
     for (let i = start; i < end; i++) {
       if (array[i] < pivotValue) {
         this.swap(i, pivotIndex, array);
-        await this.sleep(5);
+        await this.sleep();
         canvas.clear();
         canvas.drawGraph(array);
         pivotIndex++;
