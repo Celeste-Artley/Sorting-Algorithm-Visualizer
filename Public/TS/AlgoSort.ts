@@ -22,11 +22,14 @@ export class AlgoSort {
 
   async quickSort() {
     let array = canvas.array;
-    //for some reason this is being returned as "not a function..."
+    //for some reason this is being returned as "not a function..." needed to abstract to utils function for recursion
     util.quickSortRecursion(array, 0, array.length - 1, canvas);
   }
 
   async bubbleSort() {
+    //While the array is not sorted
+    //Run through the array once for the size of the array minus the counter
+    //Check the current item vs the item to the left. Swap based on size.
     let array = canvas.array;
     let isSorted = false;
     let counter = 0;
@@ -62,6 +65,8 @@ export class AlgoSort {
     console.log("Bucket Sort method called");
   }
   async functioningSortTestAlgo() {
+    //Most simplistic approach a double for loop which checks each element for each element to check it's possision
+    //then provides a swap and displays it to the canvas.
     let array = canvas.array;
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < array.length; j++) {

@@ -1,5 +1,4 @@
 import { Canvas } from "./Canvas";
-import { AlgoSort } from "./AlgoSort";
 
 export class SortingUtils {
   static waitTime: number = 5;
@@ -19,6 +18,8 @@ export class SortingUtils {
     end: number,
     canvas: Canvas
   ) {
+    //Get the next split index to decide where to recursivly run the function next time.
+    //Split the array by the index and call recusive function on both halfs
     if (start >= end) {
       return;
     }
@@ -35,6 +36,10 @@ export class SortingUtils {
     end: number,
     canvas: Canvas
   ) {
+    //Determine a pivot point and the index, this can be done in a few ways, however, the easiest is to just assign the last in the array.
+    //Create a for loop over all numbers from the start to end of the passed pointers
+    //check for values and put the larger to the right of the pivot and leave the ones to the left.
+    //after swaping clear and draw the canvas.
     var pivotIndex: number = start;
     var pivotValue: number = array[end];
     for (let i = start; i < end; i++) {
