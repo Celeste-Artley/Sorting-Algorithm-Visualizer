@@ -1,7 +1,10 @@
 import { Canvas } from "./Canvas";
 
+//this class is to provide usefull utilities to the AlgoSort algorithm such as Swaping, Waiting, and Recursion.
 export class SortingUtils {
+  //used to set the delay between frames during sorting.
   static waitTime: number = 5;
+
   sleep = () => {
     return new Promise((resolve) => setTimeout(resolve, SortingUtils.waitTime));
   };
@@ -19,18 +22,18 @@ export class SortingUtils {
     canvas: Canvas
   ) {
     //Get the next split index to decide where to recursivly run the function next time.
-    //Split the array by the index and call recusive function on both halfs
+    //recursively call the partition based on the index collected.
     if (start >= end) {
       return;
     }
-    let index = await this.partition(array, start, end, canvas);
+    let index = await this.quickSortPartition(array, start, end, canvas);
     await Promise.all([
       this.quickSortRecursion(array, start, index - 1, canvas),
       this.quickSortRecursion(array, index + 1, end, canvas),
     ]);
   }
 
-  async partition(
+  async quickSortPartition(
     array: Array<number>,
     start: number,
     end: number,
@@ -40,6 +43,7 @@ export class SortingUtils {
     //Create a for loop over all numbers from the start to end of the passed pointers
     //check for values and put the larger to the right of the pivot and leave the ones to the left.
     //after swaping clear and draw the canvas.
+    //then at the end of the for loop take the index and put it back in the array from the end.
     var pivotIndex: number = start;
     var pivotValue: number = array[end];
     for (let i = start; i < end; i++) {

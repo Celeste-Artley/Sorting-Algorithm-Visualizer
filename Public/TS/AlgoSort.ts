@@ -4,6 +4,7 @@ import { SortingUtils } from "./SortingUtils.js";
 var canvas = new Canvas();
 var util = new SortingUtils();
 
+//Algosort is the key object in this program that contains the algorithms for sorting arrays.
 export class AlgoSort {
   constructor() {}
   start() {
@@ -21,8 +22,8 @@ export class AlgoSort {
   }
 
   async quickSort() {
-    let array = canvas.array;
     //for some reason this is being returned as "not a function..." needed to abstract to utils function for recursion
+    let array = canvas.array;
     util.quickSortRecursion(array, 0, array.length - 1, canvas);
   }
 
