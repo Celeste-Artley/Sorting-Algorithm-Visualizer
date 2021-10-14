@@ -60,4 +60,21 @@ export class SortingUtils {
     canvas.drawGraph(array);
     return pivotIndex;
   }
+
+  async mergeSortRecursion(
+    array: Array<number>,
+    start: number,
+    end: number,
+    canvas: Canvas
+  ) {
+    if (array[start] > array[end]) {
+      return array;
+    }
+    var split: number = (start + end) / 2;
+    this.mergeSortRecursion(array, start, split, canvas);
+    this.mergeSortRecursion(array, split + 1, end, canvas);
+    this.mergeSortMerge();
+  }
+
+  async mergeSortMerge() {}
 }
