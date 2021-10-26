@@ -63,18 +63,49 @@ export class SortingUtils {
 
   async mergeSortRecursion(
     array: Array<number>,
-    start: number,
-    end: number,
     canvas: Canvas
-  ) {
-    if (array[start] > array[end]) {
+  ): Promise<number[]> {
+    if (array.length <= 1) {
       return array;
     }
-    var split: number = (start + end) / 2;
-    this.mergeSortRecursion(array, start, split, canvas);
-    this.mergeSortRecursion(array, split + 1, end, canvas);
-    this.mergeSortMerge();
+    var split: number = array.length / 2;
+    var left: Array<number> = array.splice(0, split);
+    var right: Array<number> = array;
+    return this.mergeSortMerge(
+      await this.mergeSortRecursion(left, canvas),
+      await this.mergeSortRecursion(right, canvas)
+    );
   }
 
-  async mergeSortMerge() {}
+  async mergeSortMerge(
+    left: Array<number>,
+    right: Array<number>
+  ): Promise<number[]> {
+    //Establish a pointer for each array, left, right, and the solution array and set them all to 0
+    //while you have two arrays to compare compare the pointed elements and place it in the returnable array
+    //after you have gone through the longer array place the remaining ones back in the array from left to right.
+    //this assumes that you have two arrays that are both sorted smalles to largest.
+    var L: number = 0,
+      R: number = 0,
+      mergedPointer: number = 0;
+    var mergedArray: Array<number>;
+    while (L < left.length && R < right.length) {
+      if (left[L] < right[R]) {
+        mergedArray[mergedPointer] = left[L];
+        L++;
+      } else {
+        mergedArray[mergedPointer] = left[R];
+        R++;
+      }
+    }
+    while (L < left.length) {
+      mergedArray[mergedPointer] = left[L];
+      L++;
+    }
+    while (R < right.length) {
+      mergedArray[mergedPointer] = left[R];
+      R++;
+    }
+    return mergedArray;
+  }
 }

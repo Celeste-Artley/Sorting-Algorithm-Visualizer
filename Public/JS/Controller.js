@@ -1,5 +1,6 @@
 import { AlgoSort } from "./AlgoSort.js";
 var algoSort = new AlgoSort();
+//Series of event listeners for the buttons under the canvas
 document.getElementById("reset").addEventListener("click", algoSort.reset);
 document
     .getElementById("newArray")
@@ -19,3 +20,4 @@ document
 document
     .getElementById("test")
     .addEventListener("click", algoSort.functioningSortTestAlgo);
+//end series of Event listeners for buttons under canvas.

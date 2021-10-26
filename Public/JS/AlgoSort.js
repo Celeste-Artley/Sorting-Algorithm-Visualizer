@@ -11,6 +11,7 @@ import { Canvas } from "./Canvas.js";
 import { SortingUtils } from "./SortingUtils.js";
 var canvas = new Canvas();
 var util = new SortingUtils();
+//Algosort is the key object in this program that contains the algorithms for sorting arrays.
 export class AlgoSort {
     constructor() { }
     start() {
@@ -28,13 +29,16 @@ export class AlgoSort {
     }
     quickSort() {
         return __awaiter(this, void 0, void 0, function* () {
+            //for some reason this is being returned as "not a function..." needed to abstract to utils function for recursion
             let array = canvas.array;
-            //for some reason this is being returned as "not a function..."
             util.quickSortRecursion(array, 0, array.length - 1, canvas);
         });
     }
     bubbleSort() {
         return __awaiter(this, void 0, void 0, function* () {
+            //While the array is not sorted
+            //Run through the array once for the size of the array minus the counter
+            //Check the current item vs the item to the left. Swap based on size.
             let array = canvas.array;
             let isSorted = false;
             let counter = 0;
@@ -57,7 +61,8 @@ export class AlgoSort {
     mergeSort() {
         return __awaiter(this, void 0, void 0, function* () {
             let array = canvas.array;
-            console.log("Merge Sort method called");
+            util.mergeSortRecursion(array, canvas);
+            console.log(array);
         });
     }
     insertionSort() {
@@ -80,6 +85,8 @@ export class AlgoSort {
     }
     functioningSortTestAlgo() {
         return __awaiter(this, void 0, void 0, function* () {
+            //Most simplistic approach a double for loop which checks each element for each element to check it's possision
+            //then provides a swap and displays it to the canvas.
             let array = canvas.array;
             for (let i = 0; i < array.length; i++) {
                 for (let j = 0; j < array.length; j++) {

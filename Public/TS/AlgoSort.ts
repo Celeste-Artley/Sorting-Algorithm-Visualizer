@@ -51,7 +51,9 @@ export class AlgoSort {
   }
   async mergeSort() {
     let array = canvas.array;
-    console.log("Merge Sort method called");
+    util.mergeSortRecursion(array, canvas);
+
+    console.log(array);
   }
   async insertionSort() {
     let array = canvas.array;
