@@ -65,7 +65,7 @@ export class SortingUtils {
             var split = array.length / 2;
             var left = array.splice(0, split);
             var right = array;
-            return this.mergeSortMerge(yield this.mergeSortRecursion(left, canvas), yield this.mergeSortRecursion(right, canvas));
+            return yield this.mergeSortMerge(yield this.mergeSortRecursion(left, canvas), yield this.mergeSortRecursion(right, canvas));
         });
     }
     mergeSortMerge(left, right) {

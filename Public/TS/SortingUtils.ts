@@ -64,23 +64,20 @@ export class SortingUtils {
   async mergeSortRecursion(
     array: Array<number>,
     canvas: Canvas
-  ): Promise<number[]> {
+  ): Promise<Array<number>> {
     if (array.length <= 1) {
       return array;
     }
     var split: number = array.length / 2;
     var left: Array<number> = array.splice(0, split);
     var right: Array<number> = array;
-    return this.mergeSortMerge(
+    return await this.mergeSortMerge(
       await this.mergeSortRecursion(left, canvas),
       await this.mergeSortRecursion(right, canvas)
     );
   }
 
-  async mergeSortMerge(
-    left: Array<number>,
-    right: Array<number>
-  ): Promise<number[]> {
+  async mergeSortMerge(left: Array<number>, right: Array<number>) {
     //Establish a pointer for each array, left, right, and the solution array and set them all to 0
     //while you have two arrays to compare compare the pointed elements and place it in the returnable array
     //after you have gone through the longer array place the remaining ones back in the array from left to right.

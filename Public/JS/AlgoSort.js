@@ -61,7 +61,7 @@ export class AlgoSort {
     mergeSort() {
         return __awaiter(this, void 0, void 0, function* () {
             let array = canvas.array;
-            util.mergeSortRecursion(array, canvas);
+            array = yield util.mergeSortRecursion(array, canvas);
             console.log(array);
         });
     }
