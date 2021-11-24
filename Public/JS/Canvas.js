@@ -3,12 +3,12 @@ if (canvas)
     var ctx = canvas.getContext("2d");
 export class Canvas {
     constructor() {
-        this.array = this.createRandomArray(53);
+        this.array = this.createRandomArray(120);
     }
     setup() {
         if (this.array.length >= 1) {
             this.array = [];
-            this.array = this.createRandomArray(53);
+            this.array = this.createRandomArray(120);
             this.drawGraph(this.array);
         }
         this.drawGraph(this.array);
@@ -26,7 +26,7 @@ export class Canvas {
     createRandomArray(num) {
         var array = [];
         for (var i = 0; i < num; i++) {
-            array[i] = Math.floor(Math.random() * 750) + 1;
+            array[i] = Math.floor(Math.random() * 650) + 1;
         }
         console.log("The current array : " + array);
         this.previousArray = array;

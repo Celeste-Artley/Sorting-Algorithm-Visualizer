@@ -2,13 +2,13 @@ var canvas = document.getElementById("AlgoDisplay");
 if (canvas) var ctx = (canvas as HTMLCanvasElement).getContext("2d");
 
 export class Canvas {
-  array: Array<number> = this.createRandomArray(53);
+  array: Array<number> = this.createRandomArray(120);
   previousArray: Array<number>;
 
   setup() {
     if (this.array.length >= 1) {
       this.array = [];
-      this.array = this.createRandomArray(53);
+      this.array = this.createRandomArray(120);
       this.drawGraph(this.array);
     }
     this.drawGraph(this.array);
@@ -34,7 +34,7 @@ export class Canvas {
   createRandomArray(num: number) {
     var array: Array<number> = [];
     for (var i: number = 0; i < num; i++) {
-      array[i] = Math.floor(Math.random() * 750) + 1;
+      array[i] = Math.floor(Math.random() * 650) + 1;
     }
     console.log("The current array : " + array);
     this.previousArray = array;
