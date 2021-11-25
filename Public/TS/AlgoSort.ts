@@ -1,12 +1,13 @@
-import { Canvas } from "Canvas";
-import { SortingUtils } from "SortingUtils";
+import { Canvas } from "./Canvas.js";
+import { SortingUtils } from "./SortingUtils.js";
 
 export class AlgoSort {
   canvas: Canvas;
   util: SortingUtils;
-  constructor(size: number) {
+
+  constructor(size: number, s: string, height: number) {
     var size: number = size;
-    this.canvas = new Canvas(size);
+    this.canvas = new Canvas(size, s, height);
     this.util = new SortingUtils(this.canvas);
   }
   start() {
@@ -36,7 +37,6 @@ export class AlgoSort {
     let array = this.canvas.array;
     let isSorted = false;
     let counter = 0;
-    console.log(array);
     while (!isSorted) {
       isSorted = true;
       for (let i = 0; i < array.length - 1 - counter; i++) {
@@ -54,8 +54,6 @@ export class AlgoSort {
   async mergeSort() {
     let array = this.canvas.array;
     array = await this.util.mergeSortRecursion(array);
-
-    console.log(array);
   }
   async insertionSort() {
     let array = this.canvas.array;

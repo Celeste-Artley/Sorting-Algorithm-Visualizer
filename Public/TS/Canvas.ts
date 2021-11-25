@@ -1,20 +1,23 @@
-var canvas = document.getElementById("AlgoDisplay");
-if (canvas) var ctx = (canvas as HTMLCanvasElement).getContext("2d");
-var num: number = 120;
-
 export class Canvas {
-  constructor(numValue: number) {
-    num = numValue;
-  }
-  array: Array<number> = this.createRandomArray(num);
+  num: number = 120;
+  canvas: HTMLElement | null;
+  ctx: CanvasRenderingContext2D | null;
+  array: Array<number> = [];
   previousArray: Array<number> = new Array();
+  height: number;
+  constructor(numValue: number, s: string, height: number) {
+    this.canvas = document.getElementById(s);
+    this.ctx = (this.canvas as HTMLCanvasElement).getContext("2d");
+    this.num = numValue;
+    this.height = height;
+    //console.log("The canvas constructor ran with: ");
+    //console.log(`${this.canvas} ${this.ctx} ${this.num}`);
+    this.setup();
+  }
 
   setup() {
-    if (this.array.length >= 1) {
-      this.array = [];
-      this.array = this.createRandomArray(num);
-      this.drawGraph(this.array);
-    }
+    this.array = [];
+    this.array = this.createRandomArray(this.num);
     this.drawGraph(this.array);
   }
 
@@ -25,42 +28,40 @@ export class Canvas {
     endY: number,
     color: string
   ) {
-    ctx!.save();
-    ctx!.strokeStyle = color;
-    ctx!.lineWidth = 4;
-    ctx!.beginPath();
-    ctx!.moveTo(startX, startY);
-    ctx!.lineTo(endX, endY);
-    ctx!.stroke();
-    ctx!.restore();
+    this.ctx!.save();
+    this.ctx!.strokeStyle = color;
+    this.ctx!.lineWidth = 4;
+    this.ctx!.beginPath();
+    this.ctx!.moveTo(startX, startY);
+    this.ctx!.lineTo(endX, endY);
+    this.ctx!.stroke();
+    this.ctx!.restore();
   }
 
   createRandomArray(num: number) {
     var array: Array<number> = [];
     for (var i: number = 0; i < num; i++) {
-      array[i] = Math.floor(Math.random() * 650) + 1;
+      array[i] = Math.floor(Math.random() * this.height) + 1;
     }
-    console.log("The current array : " + array);
     this.previousArray = array;
     return array;
   }
 
   clear() {
-    ctx!.save();
-    ctx!.setTransform(1, 0, 0, 1, 0, 0);
-    ctx!.clearRect(
+    this.ctx!.save();
+    this.ctx!.setTransform(1, 0, 0, 1, 0, 0);
+    this.ctx!.clearRect(
       0,
       0,
-      (canvas as HTMLCanvasElement).width,
-      (canvas as HTMLCanvasElement).height
+      (this.canvas as HTMLCanvasElement).width,
+      (this.canvas as HTMLCanvasElement).height
     );
-    ctx!.restore();
+    this.ctx!.restore();
   }
 
   resetGraph() {
     if (this.previousArray) {
       this.clear();
-      console.log(this.previousArray);
       this.array = this.previousArray;
       this.setup();
     }
@@ -70,9 +71,9 @@ export class Canvas {
     for (var i: number = 0; lines.length > i; i++) {
       this.drawLine(
         i * 15 + 5,
-        (canvas as HTMLCanvasElement).height,
+        (this.canvas as HTMLCanvasElement).height,
         i * 15 + 5,
-        (canvas as HTMLCanvasElement).height - lines[i],
+        (this.canvas as HTMLCanvasElement).height - lines[i],
         "White"
       );
     }

@@ -7,12 +7,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { Canvas } from "Canvas";
-import { SortingUtils } from "SortingUtils";
+import { Canvas } from "./Canvas.js";
+import { SortingUtils } from "./SortingUtils.js";
 export class AlgoSort {
-    constructor(size) {
+    constructor(size, s, height) {
         var size = size;
-        this.canvas = new Canvas(size);
+        this.canvas = new Canvas(size, s, height);
         this.util = new SortingUtils(this.canvas);
     }
     start() {
@@ -43,7 +43,6 @@ export class AlgoSort {
             let array = this.canvas.array;
             let isSorted = false;
             let counter = 0;
-            console.log(array);
             while (!isSorted) {
                 isSorted = true;
                 for (let i = 0; i < array.length - 1 - counter; i++) {
@@ -63,7 +62,6 @@ export class AlgoSort {
         return __awaiter(this, void 0, void 0, function* () {
             let array = this.canvas.array;
             array = yield this.util.mergeSortRecursion(array);
-            console.log(array);
         });
     }
     insertionSort() {

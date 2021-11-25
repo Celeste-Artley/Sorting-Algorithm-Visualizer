@@ -1,4 +1,4 @@
-import { Canvas } from "Canvas";
+import { Canvas } from "./Canvas.js";
 
 //this class is to provide usefull utilities to the AlgoSort algorithm such as Swaping, Waiting, and Recursion.
 export class SortingUtils {
