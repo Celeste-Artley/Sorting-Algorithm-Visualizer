@@ -7,31 +7,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { Canvas } from "./Canvas.js";
-import { SortingUtils } from "./SortingUtils.js";
-var canvas = new Canvas();
-var util = new SortingUtils();
-//Algosort is the key object in this program that contains the algorithms for sorting arrays.
+import { Canvas } from "Canvas";
+import { SortingUtils } from "SortingUtils";
 export class AlgoSort {
-    constructor() { }
+    constructor(size) {
+        var size = size;
+        this.canvas = new Canvas(size);
+        this.util = new SortingUtils(this.canvas);
+    }
     start() {
-        canvas.setup();
+        this.canvas.setup();
     }
     newArray() {
-        canvas.clear();
-        canvas.setup();
+        this.canvas.clear();
+        this.canvas.setup();
     }
     clear() {
-        canvas.clear();
+        this.canvas.clear();
     }
     reset() {
-        canvas.resetGraph();
+        this.canvas.resetGraph();
     }
     quickSort() {
         return __awaiter(this, void 0, void 0, function* () {
             //for some reason this is being returned as "not a function..." needed to abstract to utils function for recursion
-            let array = canvas.array;
-            util.quickSortRecursion(array, 0, array.length - 1, canvas);
+            let array = this.canvas.array;
+            this.util.quickSortRecursion(array, 0, array.length - 1);
         });
     }
     bubbleSort() {
@@ -39,7 +40,7 @@ export class AlgoSort {
             //While the array is not sorted
             //Run through the array once for the size of the array minus the counter
             //Check the current item vs the item to the left. Swap based on size.
-            let array = canvas.array;
+            let array = this.canvas.array;
             let isSorted = false;
             let counter = 0;
             console.log(array);
@@ -47,11 +48,11 @@ export class AlgoSort {
                 isSorted = true;
                 for (let i = 0; i < array.length - 1 - counter; i++) {
                     if (array[i] > array[i + 1]) {
-                        util.swap(i, i + 1, array);
+                        this.util.swap(i, i + 1, array);
                         isSorted = false;
-                        yield util.sleep();
-                        canvas.clear();
-                        canvas.drawGraph(array);
+                        yield this.util.sleep();
+                        this.canvas.clear();
+                        this.canvas.drawGraph(array);
                     }
                 }
                 counter++;
@@ -60,26 +61,26 @@ export class AlgoSort {
     }
     mergeSort() {
         return __awaiter(this, void 0, void 0, function* () {
-            let array = canvas.array;
-            array = yield util.mergeSortRecursion(array, canvas);
+            let array = this.canvas.array;
+            array = yield this.util.mergeSortRecursion(array);
             console.log(array);
         });
     }
     insertionSort() {
         return __awaiter(this, void 0, void 0, function* () {
-            let array = canvas.array;
+            let array = this.canvas.array;
             console.log("Insertion Sort method called");
         });
     }
     heapSort() {
         return __awaiter(this, void 0, void 0, function* () {
-            let array = canvas.array;
+            let array = this.canvas.array;
             console.log("Heap Sort method called");
         });
     }
     bucketSort() {
         return __awaiter(this, void 0, void 0, function* () {
-            let array = canvas.array;
+            let array = this.canvas.array;
             console.log("Bucket Sort method called");
         });
     }
@@ -87,15 +88,15 @@ export class AlgoSort {
         return __awaiter(this, void 0, void 0, function* () {
             //Most simplistic approach a double for loop which checks each element for each element to check it's possision
             //then provides a swap and displays it to the canvas.
-            let array = canvas.array;
+            let array = this.canvas.array;
             for (let i = 0; i < array.length; i++) {
                 for (let j = 0; j < array.length; j++) {
-                    yield util.sleep();
-                    canvas.clear();
+                    yield this.util.sleep();
+                    this.canvas.clear();
                     if (array[j] > array[j + 1]) {
-                        util.swap(j, j + 1, array);
+                        this.util.swap(j, j + 1, array);
                     }
-                    canvas.drawGraph(array);
+                    this.canvas.drawGraph(array);
                 }
             }
         });

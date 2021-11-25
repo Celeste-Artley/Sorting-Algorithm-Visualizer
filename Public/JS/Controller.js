@@ -1,7 +1,6 @@
-import { AlgoSort } from "./AlgoSort.js";
-import { AlgoSortSmall } from "./AlgoSortSmall.js";
-var algoSort = new AlgoSort();
-var algoSortSmall = new AlgoSortSmall();
+import { AlgoSort } from "AlgoSort";
+var algoSort = new AlgoSort(120);
+var algoSortSmall = new AlgoSort(27);
 //Series of event listeners for the buttons under the canvas
 document.getElementById("reset").addEventListener("click", algoSort.reset);
 document

@@ -1,14 +1,17 @@
 var canvas = document.getElementById("AlgoDisplay");
 if (canvas)
     var ctx = canvas.getContext("2d");
+var num = 120;
 export class Canvas {
-    constructor() {
-        this.array = this.createRandomArray(120);
+    constructor(numValue) {
+        this.array = this.createRandomArray(num);
+        this.previousArray = new Array();
+        num = numValue;
     }
     setup() {
         if (this.array.length >= 1) {
             this.array = [];
-            this.array = this.createRandomArray(120);
+            this.array = this.createRandomArray(num);
             this.drawGraph(this.array);
         }
         this.drawGraph(this.array);

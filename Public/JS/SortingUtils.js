@@ -9,31 +9,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 //this class is to provide usefull utilities to the AlgoSort algorithm such as Swaping, Waiting, and Recursion.
 export class SortingUtils {
-    constructor() {
+    constructor(c) {
         this.sleep = () => {
             return new Promise((resolve) => setTimeout(resolve, SortingUtils.waitTime));
         };
+        this.c = c;
     }
     swap(leftIndex, rightIndex, items) {
         var temp = items[leftIndex];
         items[leftIndex] = items[rightIndex];
         items[rightIndex] = temp;
     }
-    quickSortRecursion(array, start, end, canvas) {
+    quickSortRecursion(array, start, end) {
         return __awaiter(this, void 0, void 0, function* () {
             //Get the next split index to decide where to recursivly run the function next time.
             //recursively call the partition based on the index collected.
             if (start >= end) {
                 return;
             }
-            let index = yield this.quickSortPartition(array, start, end, canvas);
+            let index = yield this.quickSortPartition(array, start, end);
             yield Promise.all([
-                this.quickSortRecursion(array, start, index - 1, canvas),
-                this.quickSortRecursion(array, index + 1, end, canvas),
+                this.quickSortRecursion(array, start, index - 1),
+                this.quickSortRecursion(array, index + 1, end),
             ]);
         });
     }
-    quickSortPartition(array, start, end, canvas) {
+    quickSortPartition(array, start, end) {
         return __awaiter(this, void 0, void 0, function* () {
             //Determine a pivot point and the index, this can be done in a few ways, however, the easiest is to just assign the last in the array.
             //Create a for loop over all numbers from the start to end of the passed pointers
@@ -46,18 +47,18 @@ export class SortingUtils {
                 if (array[i] < pivotValue) {
                     this.swap(i, pivotIndex, array);
                     yield this.sleep();
-                    canvas.clear();
-                    canvas.drawGraph(array);
+                    this.c.clear();
+                    this.c.drawGraph(array);
                     pivotIndex++;
                 }
             }
             this.swap(pivotIndex, end, array);
-            canvas.clear();
-            canvas.drawGraph(array);
+            this.c.clear();
+            this.c.drawGraph(array);
             return pivotIndex;
         });
     }
-    mergeSortRecursion(array, canvas) {
+    mergeSortRecursion(array) {
         return __awaiter(this, void 0, void 0, function* () {
             if (array.length <= 1) {
                 return array;
@@ -65,7 +66,7 @@ export class SortingUtils {
             var split = array.length / 2;
             var left = array.splice(0, split);
             var right = array;
-            return yield this.mergeSortMerge(yield this.mergeSortRecursion(left, canvas), yield this.mergeSortRecursion(right, canvas));
+            return yield this.mergeSortMerge(yield this.mergeSortRecursion(left), yield this.mergeSortRecursion(right));
         });
     }
     mergeSortMerge(left, right) {
@@ -75,7 +76,7 @@ export class SortingUtils {
             //after you have gone through the longer array place the remaining ones back in the array from left to right.
             //this assumes that you have two arrays that are both sorted smalles to largest.
             var L = 0, R = 0, mergedPointer = 0;
-            var mergedArray;
+            var mergedArray = new Array();
             while (L < left.length && R < right.length) {
                 if (left[L] < right[R]) {
                     mergedArray[mergedPointer] = left[L];

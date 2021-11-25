@@ -1,14 +1,18 @@
 var canvas = document.getElementById("AlgoDisplay");
 if (canvas) var ctx = (canvas as HTMLCanvasElement).getContext("2d");
+var num: number = 120;
 
 export class Canvas {
-  array: Array<number> = this.createRandomArray(120);
-  previousArray: Array<number>;
+  constructor(numValue: number) {
+    num = numValue;
+  }
+  array: Array<number> = this.createRandomArray(num);
+  previousArray: Array<number> = new Array();
 
   setup() {
     if (this.array.length >= 1) {
       this.array = [];
-      this.array = this.createRandomArray(120);
+      this.array = this.createRandomArray(num);
       this.drawGraph(this.array);
     }
     this.drawGraph(this.array);
@@ -21,14 +25,14 @@ export class Canvas {
     endY: number,
     color: string
   ) {
-    ctx.save();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 4;
-    ctx.beginPath();
-    ctx.moveTo(startX, startY);
-    ctx.lineTo(endX, endY);
-    ctx.stroke();
-    ctx.restore();
+    ctx!.save();
+    ctx!.strokeStyle = color;
+    ctx!.lineWidth = 4;
+    ctx!.beginPath();
+    ctx!.moveTo(startX, startY);
+    ctx!.lineTo(endX, endY);
+    ctx!.stroke();
+    ctx!.restore();
   }
 
   createRandomArray(num: number) {
@@ -42,15 +46,15 @@ export class Canvas {
   }
 
   clear() {
-    ctx.save();
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.clearRect(
+    ctx!.save();
+    ctx!.setTransform(1, 0, 0, 1, 0, 0);
+    ctx!.clearRect(
       0,
       0,
       (canvas as HTMLCanvasElement).width,
       (canvas as HTMLCanvasElement).height
     );
-    ctx.restore();
+    ctx!.restore();
   }
 
   resetGraph() {
