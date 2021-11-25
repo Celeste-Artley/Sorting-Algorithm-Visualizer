@@ -51,21 +51,58 @@ export class AlgoSort {
       counter++;
     }
   }
-  async mergeSort() {
-    let array = this.canvas.array;
-    array = await this.util.mergeSortRecursion(array);
-  }
   async insertionSort() {
     let array = this.canvas.array;
-    console.log("Insertion Sort method called");
+    let i, key, j;
+    for (i = 1; i < array.length; i++) {
+      key = array[i];
+      j = i - 1;
+
+      while (j >= 0 && array[j] > key) {
+        array[j + 1] = array[j];
+        j = j - 1;
+      }
+      await this.util.sleep();
+      this.canvas.clear();
+      this.canvas.drawGraph(array);
+      array[j + 1] = key;
+    }
   }
   async heapSort() {
     let array = this.canvas.array;
-    console.log("Heap Sort method called");
+    let n: number = array.length;
+    for (let i = n / 2 - 1; i >= 0; i--) {
+      this.maxHeap(array, n, i);
+    }
+
+    for (let i = n - 1; i >= 0; i--) {
+      this.util.swap(0, i, array);
+
+      await this.util.sleep();
+      this.canvas.clear();
+      this.canvas.drawGraph(array);
+
+      this.maxHeap(array, i, 0);
+    }
   }
-  async bucketSort() {
-    let array = this.canvas.array;
-    console.log("Bucket Sort method called");
+  maxHeap(array: Array<number>, n: number, m: number) {
+    let largest = m;
+    let l = 2 * m + 1;
+    let r = 2 * m + 2;
+
+    if (l < n && array[l] > array[largest]) {
+      largest = l;
+    }
+
+    if (r < n && array[r] > array[largest]) {
+      largest = r;
+    }
+
+    if (largest != m) {
+      this.util.swap(m, largest, array);
+
+      this.maxHeap(array, n, largest);
+    }
   }
   async functioningSortTestAlgo() {
     //Most simplistic approach a double for loop which checks each element for each element to check it's possision

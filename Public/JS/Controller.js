@@ -15,17 +15,11 @@ document
     .getElementById("bubble")
     .addEventListener("click", algoSort.bubbleSort.bind(algoSort));
 document
-    .getElementById("merge")
-    .addEventListener("click", algoSort.mergeSort.bind(algoSort));
-document
     .getElementById("insertion")
     .addEventListener("click", algoSort.insertionSort.bind(algoSort));
 document
     .getElementById("heap")
     .addEventListener("click", algoSort.heapSort.bind(algoSort));
-document
-    .getElementById("bucket")
-    .addEventListener("click", algoSort.bucketSort.bind(algoSort));
 document
     .getElementById("test")
     .addEventListener("click", algoSort.functioningSortTestAlgo.bind(algoSort));
@@ -44,17 +38,11 @@ document
     .getElementById("sbubble")
     .addEventListener("click", algoSortSmall.bubbleSort.bind(algoSortSmall));
 document
-    .getElementById("merge")
-    .addEventListener("click", algoSortSmall.mergeSort.bind(algoSortSmall));
-document
     .getElementById("sinsertion")
     .addEventListener("click", algoSortSmall.insertionSort.bind(algoSortSmall));
 document
     .getElementById("sheap")
     .addEventListener("click", algoSortSmall.heapSort.bind(algoSortSmall));
-document
-    .getElementById("sbucket")
-    .addEventListener("click", algoSortSmall.bucketSort.bind(algoSortSmall));
 document
     .getElementById("stest")
     .addEventListener("click", algoSortSmall.functioningSortTestAlgo.bind(algoSortSmall));

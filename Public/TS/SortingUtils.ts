@@ -53,46 +53,4 @@ export class SortingUtils {
     this.c.drawGraph(array);
     return pivotIndex;
   }
-
-  async mergeSortRecursion(array: Array<number>): Promise<Array<number>> {
-    if (array.length <= 1) {
-      return array;
-    }
-    var split: number = array.length / 2;
-    var left: Array<number> = array.splice(0, split);
-    var right: Array<number> = array;
-    return await this.mergeSortMerge(
-      await this.mergeSortRecursion(left),
-      await this.mergeSortRecursion(right)
-    );
-  }
-
-  async mergeSortMerge(left: Array<number>, right: Array<number>) {
-    //Establish a pointer for each array, left, right, and the solution array and set them all to 0
-    //while you have two arrays to compare compare the pointed elements and place it in the returnable array
-    //after you have gone through the longer array place the remaining ones back in the array from left to right.
-    //this assumes that you have two arrays that are both sorted smalles to largest.
-    var L: number = 0,
-      R: number = 0,
-      mergedPointer: number = 0;
-    var mergedArray: Array<number> = new Array();
-    while (L < left.length && R < right.length) {
-      if (left[L] < right[R]) {
-        mergedArray[mergedPointer] = left[L];
-        L++;
-      } else {
-        mergedArray[mergedPointer] = left[R];
-        R++;
-      }
-    }
-    while (L < left.length) {
-      mergedArray[mergedPointer] = left[L];
-      L++;
-    }
-    while (R < right.length) {
-      mergedArray[mergedPointer] = left[R];
-      R++;
-    }
-    return mergedArray;
-  }
 }

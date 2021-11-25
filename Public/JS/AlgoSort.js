@@ -58,29 +58,54 @@ export class AlgoSort {
             }
         });
     }
-    mergeSort() {
-        return __awaiter(this, void 0, void 0, function* () {
-            let array = this.canvas.array;
-            array = yield this.util.mergeSortRecursion(array);
-        });
-    }
     insertionSort() {
         return __awaiter(this, void 0, void 0, function* () {
             let array = this.canvas.array;
-            console.log("Insertion Sort method called");
+            let i, key, j;
+            for (i = 1; i < array.length; i++) {
+                key = array[i];
+                j = i - 1;
+                while (j >= 0 && array[j] > key) {
+                    array[j + 1] = array[j];
+                    j = j - 1;
+                }
+                yield this.util.sleep();
+                this.canvas.clear();
+                this.canvas.drawGraph(array);
+                array[j + 1] = key;
+            }
         });
     }
     heapSort() {
         return __awaiter(this, void 0, void 0, function* () {
             let array = this.canvas.array;
-            console.log("Heap Sort method called");
+            let n = array.length;
+            for (let i = n / 2 - 1; i >= 0; i--) {
+                this.maxHeap(array, n, i);
+            }
+            for (let i = n - 1; i >= 0; i--) {
+                this.util.swap(0, i, array);
+                yield this.util.sleep();
+                this.canvas.clear();
+                this.canvas.drawGraph(array);
+                this.maxHeap(array, i, 0);
+            }
         });
     }
-    bucketSort() {
-        return __awaiter(this, void 0, void 0, function* () {
-            let array = this.canvas.array;
-            console.log("Bucket Sort method called");
-        });
+    maxHeap(array, n, m) {
+        let largest = m;
+        let l = 2 * m + 1;
+        let r = 2 * m + 2;
+        if (l < n && array[l] > array[largest]) {
+            largest = l;
+        }
+        if (r < n && array[r] > array[largest]) {
+            largest = r;
+        }
+        if (largest != m) {
+            this.util.swap(m, largest, array);
+            this.maxHeap(array, n, largest);
+        }
     }
     functioningSortTestAlgo() {
         return __awaiter(this, void 0, void 0, function* () {

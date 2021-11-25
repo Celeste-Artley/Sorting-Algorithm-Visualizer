@@ -58,46 +58,6 @@ export class SortingUtils {
             return pivotIndex;
         });
     }
-    mergeSortRecursion(array) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (array.length <= 1) {
-                return array;
-            }
-            var split = array.length / 2;
-            var left = array.splice(0, split);
-            var right = array;
-            return yield this.mergeSortMerge(yield this.mergeSortRecursion(left), yield this.mergeSortRecursion(right));
-        });
-    }
-    mergeSortMerge(left, right) {
-        return __awaiter(this, void 0, void 0, function* () {
-            //Establish a pointer for each array, left, right, and the solution array and set them all to 0
-            //while you have two arrays to compare compare the pointed elements and place it in the returnable array
-            //after you have gone through the longer array place the remaining ones back in the array from left to right.
-            //this assumes that you have two arrays that are both sorted smalles to largest.
-            var L = 0, R = 0, mergedPointer = 0;
-            var mergedArray = new Array();
-            while (L < left.length && R < right.length) {
-                if (left[L] < right[R]) {
-                    mergedArray[mergedPointer] = left[L];
-                    L++;
-                }
-                else {
-                    mergedArray[mergedPointer] = left[R];
-                    R++;
-                }
-            }
-            while (L < left.length) {
-                mergedArray[mergedPointer] = left[L];
-                L++;
-            }
-            while (R < right.length) {
-                mergedArray[mergedPointer] = left[R];
-                R++;
-            }
-            return mergedArray;
-        });
-    }
 }
 //used to set the delay between frames during sorting.
 SortingUtils.waitTime = 5;
